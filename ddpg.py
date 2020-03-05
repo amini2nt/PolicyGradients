@@ -95,7 +95,7 @@ class Critic(nn.Module):
 
 class Actor(nn.Module):
 	def __init__(self, lr, input_dims, fc1_dims, fc2_dims, n_actions, name, chkpt_dir='temp/ddpg'):
-		super(Critic, self).__init__()
+		super(Actor, self).__init__()
 		self.input_dims = input_dims
 		self.fc1_dims = fc1_dims
 		self.fc2_dims = fc2_dims
@@ -153,7 +153,7 @@ class Agent(object):
 	 	self.gamma = gamma
 	 	self.tau = tau
 	 	self.memory = ReplayBuffer(max_size, input_dims, n_actions)
-	 	self.batch_size
+	 	self.batch_size = batch_size
 
 	 	self.actor = Actor(alpha, input_dims, layer1_dims, layer2_dims, n_actions, name='Actor')
 	 	self.target_actor = Actor(alpha, input_dims, layer1_dims, layer2_dims, n_actions, name='target_Actor')
